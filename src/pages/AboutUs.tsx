@@ -239,6 +239,105 @@ const AboutUsPage = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto">
+            <h2 className="font-display text-3xl font-bold text-foreground mb-4 text-center">Questions Fréquemment Posées</h2>
+            <p className="text-center text-muted-foreground mb-12">Trouvez les réponses aux questions les plus courantes sur nos services et notre expertise</p>
+            <div className="space-y-4">
+              {[
+                { q: "Combien de temps dure une intervention de réparation ?", a: "La plupart de nos interventions durent entre 1 et 3 heures selon la complexité de la panne. Nous vous donnons une estimation précise lors de notre diagnostic gratuit." },
+                { q: "Disposez-vous de pièces de rechange en stock ?", a: "Oui, nous disposons d'un stock complet de pièces de rechange pour toutes les marques principales (Somfy, Bubendorff, Profalux, etc.). Cela nous permet d'intervenir rapidement." },
+                { q: "Quelle est votre zone d'intervention ?", a: "Nous intervenons à Paris, en Île-de-France et dans toute la France. Nous nous déplaçons sous 48 heures en temps normal, et le jour même en cas d'urgence." },
+                { q: "Proposez-vous une garantie sur vos interventions ?", a: "Oui, nous garantissons 3 ans pièces et main d'œuvre sur toutes nos interventions. C'est notre engagement envers votre satisfaction." },
+                { q: "Comment puis-je obtenir un devis ?", a: "Contactez-nous par téléphone (06 03 20 59 67), par email ou via notre formulaire en ligne. Nous vous proposons un diagnostic gratuit et un devis transparent." }
+              ].map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-card rounded-xl p-6 border border-border card-shadow hover:card-shadow-hover transition-all">
+                  <h3 className="font-display font-bold text-foreground mb-3 text-lg">{item.q}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.a}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-section-gradient">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="font-display text-3xl font-bold text-foreground mb-4">Ce que nos clients disent</h2>
+            <p className="text-muted-foreground">Des centaines de clients satisfaits nous font confiance pour leurs besoins en volets roulants</p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              { name: "Marie Dupont", location: "Paris 15e", rating: 5, text: "Intervention rapide et professionnelle. Les techniciens ont été très courtois et le travail est impeccable. Je recommande vivement !" },
+              { name: "Jean Moreau", location: "Boulogne-Billancourt", rating: 5, text: "Excellent service. Devis transparent, pas de frais cachés. Mon volet roulant fonctionne comme neuf. Merci pour votre réactivité !" },
+              { name: "Sophie Bernard", location: "Neuilly-sur-Seine", rating: 5, text: "Très satisfaite de la motorisation de mes volets. L'équipe a expliqué le fonctionnement en détail. Garantie 3 ans très rassurante." }
+            ].map((testimonial, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-8 border border-border card-shadow hover:card-shadow-hover transition-all">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, j) => (
+                    <span key={j} className="text-yellow-400">★</span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-6 italic">"{testimonial.text}"</p>
+                <div>
+                  <p className="font-display font-bold text-foreground">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Zones d'Intervention Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto">
+            <h2 className="font-display text-3xl font-bold text-foreground mb-4 text-center">Où Intervenons-Nous ?</h2>
+            <p className="text-center text-muted-foreground mb-12">Présents à Paris et en Île-de-France, nous intervenons dans toute la France métropolitaine</p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                <h3 className="font-display font-bold text-foreground mb-6 text-xl">Zones principales</h3>
+                <ul className="space-y-3">
+                  {[
+                    "Paris (tous les arrondissements)",
+                    "Île-de-France (92, 93, 94, 77, 78, 91, 95)",
+                    "Banlieue parisienne (Boulogne, Neuilly, Levallois, etc.)",
+                    "Versailles et région",
+                    "Interventions sur toute la France (délais adaptés)"
+                  ].map((zone, i) => (
+                    <li key={i} className="flex items-center gap-3 text-foreground">
+                      <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
+                      {zone}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                <h3 className="font-display font-bold text-foreground mb-6 text-xl">Délais d'intervention</h3>
+                <div className="space-y-4">
+                  {[
+                    { title: "Urgence (bris de glace, volet bloqué)", desc: "Intervention le jour même si possible" },
+                    { title: "Intervention standard", desc: "Sous 48 heures en Île-de-France" },
+                    { title: "Interventions régionales", desc: "Délais adaptés selon la localisation" },
+                    { title: "Devis et diagnostic", desc: "Gratuit et sans engagement" }
+                  ].map((item, i) => (
+                    <div key={i} className="bg-card rounded-lg p-4 border border-border">
+                      <p className="font-display font-bold text-foreground text-sm">{item.title}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Quote Form Section */}
       <QuoteFormSection />
 
